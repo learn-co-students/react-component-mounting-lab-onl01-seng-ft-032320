@@ -5,8 +5,12 @@ class Timer extends Component {
     time: 0,
     color: "#" + Math.floor(Math.random() * 16777215).toString(16)
   };
-
+  // timer has 3 props: key={id} id={id} removeTimer={this.removeTimer}
   // add your code here
+
+  componentDidMount() {
+
+  }
 
   render() {
     const { time, color } = this.state;
@@ -35,6 +39,11 @@ class Timer extends Component {
   handleClose = () => {
     this.props.removeTimer(this.props.id);
   };
+
+  componentWillUnmount() {
+    
+  }
+
 }
 
 export default Timer;
