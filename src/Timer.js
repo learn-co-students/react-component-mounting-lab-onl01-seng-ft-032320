@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 
 class Timer extends Component {
+  
   state = {
     time: 0,
     color: "#" + Math.floor(Math.random() * 16777215).toString(16)
   };
 
   // add your code here
+  componentDidMount() {
+    this.interval = setInterval(this.clockTick, 1000)
+  }
 
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
   render() {
     const { time, color } = this.state;
     return (
@@ -19,6 +26,8 @@ class Timer extends Component {
       </section>
     );
   }
+
+
 
   //clock functions
   clockTick = () => {
@@ -34,6 +43,7 @@ class Timer extends Component {
   // for the 'x' button,
   handleClose = () => {
     this.props.removeTimer(this.props.id);
+    
   };
 }
 
